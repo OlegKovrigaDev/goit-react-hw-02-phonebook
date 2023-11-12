@@ -16,13 +16,9 @@ export default class ContactForm extends Component {
     e.preventDefault();
 
     const { name, number } = this.state;
-    const { contacts, addContact } = this.props;
+    const { checkContactName, addContact } = this.props;
 
-    // Перевірка наявності контакту з таким іменем у телефонній книзі
-    if (contacts.some(contact => contact.name === name)) {
-      alert(`${name} is already in contacts.`);
-      return;
-    }
+    checkContactName(name)
 
     // Додавання нового контакту
     const newContact = {
